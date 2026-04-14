@@ -1,0 +1,43 @@
+erDiagram
+    CATEGORIES ||--o{ PRODUCTS : contains
+    CUSTOMERS ||--o{ SALES : places
+    PRODUCTS ||--o{ SALE_ITEMS : included_in
+    SALES ||--o{ SALE_ITEMS : consists_of
+
+    CATEGORIES {
+        int category_id PK
+        string name
+        string description
+    }
+
+    CUSTOMERS {
+        int customer_id PK
+        string first_name
+        string last_name
+        string email
+        string phone
+    }
+
+    PRODUCTS {
+        int product_id PK
+        int category_id FK
+        string name
+        decimal price
+        int stock_quantity
+    }
+
+    SALES {
+        int sale_id PK
+        int customer_id FK
+        datetime sale_date
+        decimal total_amount
+    }
+
+    SALE_ITEMS {
+        int sale_item_id PK
+        int sale_id FK
+        int product_id FK
+        int quantity
+        decimal unit_price
+        decimal subtotal
+    }
